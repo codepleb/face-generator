@@ -18,7 +18,7 @@
       const canvas = document.querySelector("#face");
       const context = canvas.getContext("2d");
 
-      const RANDOM_FACTOR = 5;
+      const RANDOM_FACTOR = 10;
 
       const EYE_LENGTH = 80;
       const LEFT_EYE_START_X = 50;
@@ -47,7 +47,7 @@
       }
 
       function addRandomValueTo(number) {
-        return number + Math.random() * RANDOM_FACTOR;
+        return number - RANDOM_FACTOR + Math.random() * RANDOM_FACTOR * 2;
       }
 
       let underlip,
