@@ -15,6 +15,12 @@ function bezier(template) {
   context.stroke();
 }
 
+const EYE_LENGTH = 80;
+const LEFT_EYE_START_X = 50;
+const EYE_CENTER_Y = 100;
+
+const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
+
 const underlip = [
   {
     x: 30,
@@ -59,8 +65,8 @@ bezier(upperLip);
 
 const leftEyeUpper = [
   {
-    x: 50,
-    y: 100
+    x: LEFT_EYE_START_X,
+    y: EYE_CENTER_Y
   },
   {
     x: 50,
@@ -71,8 +77,8 @@ const leftEyeUpper = [
     y: 140
   },
   {
-    x: 130,
-    y: 100
+    x: LEFT_EYE_END_X,
+    y: EYE_CENTER_Y
   }
 ];
 
@@ -80,8 +86,8 @@ bezier(leftEyeUpper);
 
 const leftEyeLower = [
   {
-    x: 50,
-    y: 100
+    x: LEFT_EYE_START_X,
+    y: EYE_CENTER_Y
   },
   {
     x: 50,
@@ -92,8 +98,8 @@ const leftEyeLower = [
     y: 60
   },
   {
-    x: 130,
-    y: 100
+    x: LEFT_EYE_END_X,
+    y: EYE_CENTER_Y
   }
 ];
 
@@ -102,7 +108,7 @@ bezier(leftEyeLower);
 const rightEyeLower = [
   {
     x: 250,
-    y: 100
+    y: EYE_CENTER_Y
   },
   {
     x: 250,
@@ -114,7 +120,7 @@ const rightEyeLower = [
   },
   {
     x: 170,
-    y: 100
+    y: EYE_CENTER_Y
   }
 ];
 
@@ -123,7 +129,7 @@ bezier(rightEyeLower);
 const rightEyeUpper = [
   {
     x: 250,
-    y: 100
+    y: EYE_CENTER_Y
   },
   {
     x: 250,
@@ -135,7 +141,7 @@ const rightEyeUpper = [
   },
   {
     x: 170,
-    y: 100
+    y: EYE_CENTER_Y
   }
 ];
 
