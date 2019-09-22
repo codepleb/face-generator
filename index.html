@@ -10,7 +10,7 @@
   <body>
     <style>
       canvas {
-        border-style: solid;
+        /* border-style: solid; */
       }
     </style>
     <canvas id="face" width="300" height="300"></canvas>
@@ -50,152 +50,164 @@
         return number + Math.random() * RANDOM_FACTOR;
       }
 
-      const underlip = [
-        {
-          x: UNDERLIP_START_X,
-          y: UNDERLIP_CENTER_Y
-        },
-        {
-          x: addRandomValueTo(30),
-          y: addRandomValueTo(290)
-        },
-        {
-          x: addRandomValueTo(270),
-          y: addRandomValueTo(290)
-        },
-        {
-          x: UNDERLIP_END_X,
-          y: UNDERLIP_CENTER_Y
-        }
-      ];
+      let underlip,
+        upperLip,
+        leftEyeUpper,
+        leftEyeLower,
+        rightEyeUpper,
+        rightEyeLower,
+        noseLeft;
 
-      bezier(underlip);
+      function defineValues() {
+        underlip = [
+          {
+            x: UNDERLIP_START_X,
+            y: UNDERLIP_CENTER_Y
+          },
+          {
+            x: addRandomValueTo(30),
+            y: addRandomValueTo(290)
+          },
+          {
+            x: addRandomValueTo(270),
+            y: addRandomValueTo(290)
+          },
+          {
+            x: UNDERLIP_END_X,
+            y: UNDERLIP_CENTER_Y
+          }
+        ];
 
-      const upperLip = [
-        {
-          x: 30,
-          y: 240
-        },
-        {
-          x: addRandomValueTo(30),
-          y: addRandomValueTo(190)
-        },
-        {
-          x: addRandomValueTo(270),
-          y: addRandomValueTo(190)
-        },
-        {
-          x: 270,
-          y: 240
-        }
-      ];
+        upperLip = [
+          {
+            x: 30,
+            y: 240
+          },
+          {
+            x: addRandomValueTo(30),
+            y: addRandomValueTo(190)
+          },
+          {
+            x: addRandomValueTo(270),
+            y: addRandomValueTo(190)
+          },
+          {
+            x: 270,
+            y: 240
+          }
+        ];
 
-      bezier(upperLip);
+        leftEyeUpper = [
+          {
+            x: LEFT_EYE_START_X,
+            y: EYE_CENTER_Y
+          },
+          {
+            x: addRandomValueTo(50),
+            y: addRandomValueTo(140)
+          },
+          {
+            x: addRandomValueTo(130),
+            y: addRandomValueTo(140)
+          },
+          {
+            x: LEFT_EYE_END_X,
+            y: EYE_CENTER_Y
+          }
+        ];
 
-      const leftEyeUpper = [
-        {
-          x: LEFT_EYE_START_X,
-          y: EYE_CENTER_Y
-        },
-        {
-          x: addRandomValueTo(50),
-          y: addRandomValueTo(140)
-        },
-        {
-          x: addRandomValueTo(130),
-          y: addRandomValueTo(140)
-        },
-        {
-          x: LEFT_EYE_END_X,
-          y: EYE_CENTER_Y
-        }
-      ];
+        leftEyeLower = [
+          {
+            x: LEFT_EYE_START_X,
+            y: EYE_CENTER_Y
+          },
+          {
+            x: addRandomValueTo(50),
+            y: addRandomValueTo(60)
+          },
+          {
+            x: addRandomValueTo(130),
+            y: addRandomValueTo(60)
+          },
+          {
+            x: LEFT_EYE_END_X,
+            y: EYE_CENTER_Y
+          }
+        ];
 
-      bezier(leftEyeUpper);
+        rightEyeUpper = [
+          {
+            x: RIGHT_EYE_START_X,
+            y: EYE_CENTER_Y
+          },
+          {
+            x: addRandomValueTo(170),
+            y: addRandomValueTo(60)
+          },
+          {
+            x: addRandomValueTo(250),
+            y: addRandomValueTo(60)
+          },
+          {
+            x: RIGHT_EYE_END_X,
+            y: EYE_CENTER_Y
+          }
+        ];
 
-      const leftEyeLower = [
-        {
-          x: LEFT_EYE_START_X,
-          y: EYE_CENTER_Y
-        },
-        {
-          x: addRandomValueTo(50),
-          y: addRandomValueTo(60)
-        },
-        {
-          x: addRandomValueTo(130),
-          y: addRandomValueTo(60)
-        },
-        {
-          x: LEFT_EYE_END_X,
-          y: EYE_CENTER_Y
-        }
-      ];
+        rightEyeLower = [
+          {
+            x: RIGHT_EYE_START_X,
+            y: EYE_CENTER_Y
+          },
+          {
+            x: addRandomValueTo(170),
+            y: addRandomValueTo(140)
+          },
+          {
+            x: addRandomValueTo(250),
+            y: addRandomValueTo(140)
+          },
+          {
+            x: RIGHT_EYE_END_X,
+            y: EYE_CENTER_Y
+          }
+        ];
 
-      bezier(leftEyeLower);
+        noseLeft = [
+          {
+            x: NOSE_LEFT_CENTER_X,
+            y: 100
+          },
+          {
+            x: addRandomValueTo(120),
+            y: addRandomValueTo(160)
+          },
+          {
+            x: addRandomValueTo(120),
+            y: addRandomValueTo(170)
+          },
+          {
+            x: NOSE_LEFT_CENTER_X,
+            y: 180
+          }
+        ];
+      }
 
-      const rightEyeLower = [
-        {
-          x: RIGHT_EYE_START_X,
-          y: EYE_CENTER_Y
-        },
-        {
-          x: addRandomValueTo(170),
-          y: addRandomValueTo(140)
-        },
-        {
-          x: addRandomValueTo(250),
-          y: addRandomValueTo(140)
-        },
-        {
-          x: RIGHT_EYE_END_X,
-          y: EYE_CENTER_Y
-        }
-      ];
+      function drawFace() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        bezier(underlip);
+        bezier(upperLip);
+        bezier(leftEyeUpper);
+        bezier(leftEyeLower);
+        bezier(rightEyeUpper);
+        bezier(rightEyeLower);
+        bezier(noseLeft);
+      }
 
-      bezier(rightEyeLower);
-
-      const rightEyeUpper = [
-        {
-          x: RIGHT_EYE_START_X,
-          y: EYE_CENTER_Y
-        },
-        {
-          x: addRandomValueTo(170),
-          y: addRandomValueTo(60)
-        },
-        {
-          x: addRandomValueTo(250),
-          y: addRandomValueTo(60)
-        },
-        {
-          x: RIGHT_EYE_END_X,
-          y: EYE_CENTER_Y
-        }
-      ];
-
-      bezier(rightEyeUpper);
-
-      const noseLeft = [
-        {
-          x: NOSE_LEFT_CENTER_X,
-          y: 100
-        },
-        {
-          x: addRandomValueTo(120),
-          y: addRandomValueTo(160)
-        },
-        {
-          x: addRandomValueTo(120),
-          y: addRandomValueTo(170)
-        },
-        {
-          x: NOSE_LEFT_CENTER_X,
-          y: 180
-        }
-      ];
-
-      bezier(noseLeft);
+      setInterval(() => {
+        defineValues();
+        drawFace();
+      }, 100);
     </script>
   </body>
 </html>
