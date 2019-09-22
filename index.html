@@ -14,6 +14,176 @@
       }
     </style>
     <canvas id="face" width="300" height="300"></canvas>
-    <script src="index.js"></script>
+    <script>
+      const canvas = document.querySelector("#face");
+      const context = canvas.getContext("2d");
+
+      function bezier(template) {
+        context.beginPath();
+        context.moveTo(template[0].x, template[0].y);
+        context.bezierCurveTo(
+          template[1].x,
+          template[1].y,
+          template[2].x,
+          template[2].y,
+          template[3].x,
+          template[3].y
+        );
+        context.stroke();
+      }
+
+      const EYE_LENGTH = 80;
+      const LEFT_EYE_START_X = 50;
+      const EYE_CENTER_Y = 100;
+
+      const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
+
+      const underlip = [
+        {
+          x: 30,
+          y: 240
+        },
+        {
+          x: 30,
+          y: 290
+        },
+        {
+          x: 270,
+          y: 290
+        },
+        {
+          x: 270,
+          y: 240
+        }
+      ];
+
+      bezier(underlip);
+
+      const upperLip = [
+        {
+          x: 30,
+          y: 240
+        },
+        {
+          x: 30,
+          y: 190
+        },
+        {
+          x: 270,
+          y: 190
+        },
+        {
+          x: 270,
+          y: 240
+        }
+      ];
+
+      bezier(upperLip);
+
+      const leftEyeUpper = [
+        {
+          x: LEFT_EYE_START_X,
+          y: EYE_CENTER_Y
+        },
+        {
+          x: 50,
+          y: 140
+        },
+        {
+          x: 130,
+          y: 140
+        },
+        {
+          x: LEFT_EYE_END_X,
+          y: EYE_CENTER_Y
+        }
+      ];
+
+      bezier(leftEyeUpper);
+
+      const leftEyeLower = [
+        {
+          x: LEFT_EYE_START_X,
+          y: EYE_CENTER_Y
+        },
+        {
+          x: 50,
+          y: 60
+        },
+        {
+          x: 130,
+          y: 60
+        },
+        {
+          x: LEFT_EYE_END_X,
+          y: EYE_CENTER_Y
+        }
+      ];
+
+      bezier(leftEyeLower);
+
+      const rightEyeLower = [
+        {
+          x: 250,
+          y: EYE_CENTER_Y
+        },
+        {
+          x: 250,
+          y: 140
+        },
+        {
+          x: 170,
+          y: 140
+        },
+        {
+          x: 170,
+          y: EYE_CENTER_Y
+        }
+      ];
+
+      bezier(rightEyeLower);
+
+      const rightEyeUpper = [
+        {
+          x: 250,
+          y: EYE_CENTER_Y
+        },
+        {
+          x: 250,
+          y: 60
+        },
+        {
+          x: 170,
+          y: 60
+        },
+        {
+          x: 170,
+          y: EYE_CENTER_Y
+        }
+      ];
+
+      bezier(rightEyeUpper);
+
+      const noseLeft = [
+        {
+          x: 150,
+          y: 100
+        },
+        {
+          x: 120,
+          y: 160
+        },
+        {
+          x: 120,
+          y: 170
+        },
+        {
+          x: 150,
+          y: 180
+        }
+      ];
+
+      bezier(noseLeft);
+    </script>
   </body>
 </html>
