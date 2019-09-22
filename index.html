@@ -30,6 +30,8 @@
       const UNDERLIP_PADDING_X = 30;
       const UNDERLIP_CENTER_Y = 240;
 
+      const LEFT_EYE_CENTER_X = LEFT_EYE_START_X + EYE_LENGTH / 2;
+      const RIGHT_EYE_CENTER_X = RIGHT_EYE_START_X + EYE_LENGTH / 2;
       const UNDERLIP_START_X = UNDERLIP_PADDING_X;
       const UNDERLIP_END_X = canvas.width - UNDERLIP_PADDING_X;
       const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
@@ -48,8 +50,22 @@
         context.stroke();
       }
 
-      function addRandomValueTo(number) {
-        return number - RANDOM_FACTOR + Math.random() * RANDOM_FACTOR * 2;
+      function ellipse(template) {
+        context.beginPath();
+        context.ellipse(
+          template[0],
+          template[1],
+          template[2],
+          template[3],
+          template[4],
+          template[5],
+          template[6]
+        );
+        context.stroke();
+      }
+
+      function addRandomValueTo(number, randomFactor = RANDOM_FACTOR) {
+        return number - randomFactor + Math.random() * randomFactor * 2;
       }
 
       let underlip,
@@ -58,7 +74,9 @@
         leftEyeLower,
         rightEyeUpper,
         rightEyeLower,
-        noseLeft;
+        noseLeft,
+        leftPupil,
+        rightPupil;
 
       function defineValues() {
         underlip = [
@@ -193,6 +211,26 @@
             y: 180
           }
         ];
+
+        leftPupil = [
+          addRandomValueTo(LEFT_EYE_CENTER_X),
+          addRandomValueTo(EYE_CENTER_Y),
+          addRandomValueTo(10, 2),
+          addRandomValueTo(10, 2),
+          0,
+          0,
+          Math.PI * 2
+        ];
+
+        rightPupil = [
+          addRandomValueTo(RIGHT_EYE_CENTER_X),
+          addRandomValueTo(EYE_CENTER_Y),
+          addRandomValueTo(10, 2),
+          addRandomValueTo(10, 2),
+          0,
+          0,
+          Math.PI * 2
+        ];
       }
 
       function drawFace() {
@@ -204,6 +242,9 @@
         bezier(rightEyeUpper);
         bezier(rightEyeLower);
         bezier(noseLeft);
+
+        ellipse(leftPupil);
+        ellipse(rightPupil);
       }
 
       setInterval(() => {
