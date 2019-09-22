@@ -18,19 +18,19 @@ function bezier(template) {
 const underlip = [
   {
     x: 30,
-    y: 200
+    y: 240
   },
   {
     x: 30,
-    y: 250
+    y: 290
   },
   {
     x: 270,
-    y: 250
+    y: 290
   },
   {
     x: 270,
-    y: 200
+    y: 240
   }
 ];
 
@@ -39,19 +39,19 @@ bezier(underlip);
 const upperLip = [
   {
     x: 30,
-    y: 200
+    y: 240
   },
   {
     x: 30,
-    y: 150
+    y: 190
   },
   {
     x: 270,
-    y: 150
+    y: 190
   },
   {
     x: 270,
-    y: 200
+    y: 240
   }
 ];
 
@@ -59,20 +59,20 @@ bezier(upperLip);
 
 const leftEyeUpper = [
   {
-    x: 30,
-    y: 50
-  },
-  {
     x: 50,
     y: 100
   },
   {
-    x: 80,
-    y: 100
+    x: 50,
+    y: 140
   },
   {
-    x: 100,
-    y: 50
+    x: 130,
+    y: 140
+  },
+  {
+    x: 130,
+    y: 100
   }
 ];
 
@@ -80,66 +80,66 @@ bezier(leftEyeUpper);
 
 const leftEyeLower = [
   {
-    x: 30,
-    y: 50
+    x: 50,
+    y: 100
   },
   {
     x: 50,
-    y: 0
+    y: 60
   },
   {
-    x: 80,
-    y: 0
+    x: 130,
+    y: 60
   },
   {
-    x: 100,
-    y: 50
+    x: 130,
+    y: 100
   }
 ];
 
 bezier(leftEyeLower);
 
-const rightEyeUpper = [
-  {
-    x: 270,
-    y: 50
-  },
-  {
-    x: 270,
-    y: 100
-  },
-  {
-    x: 200,
-    y: 100
-  },
-  {
-    x: 200,
-    y: 50
-  }
-];
-
-bezier(rightEyeUpper);
-
 const rightEyeLower = [
   {
-    x: 270,
-    y: 50
+    x: 250,
+    y: 100
   },
   {
-    x: 270,
-    y: 0
+    x: 250,
+    y: 140
   },
   {
-    x: 200,
-    y: 0
+    x: 170,
+    y: 140
   },
   {
-    x: 200,
-    y: 50
+    x: 170,
+    y: 100
   }
 ];
 
 bezier(rightEyeLower);
+
+const rightEyeUpper = [
+  {
+    x: 250,
+    y: 100
+  },
+  {
+    x: 250,
+    y: 60
+  },
+  {
+    x: 170,
+    y: 60
+  },
+  {
+    x: 170,
+    y: 100
+  }
+];
+
+bezier(rightEyeUpper);
 
 const noseLeft = [
   {
