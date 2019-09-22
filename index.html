@@ -18,6 +18,20 @@
       const canvas = document.querySelector("#face");
       const context = canvas.getContext("2d");
 
+      const RANDOM_FACTOR = 5;
+
+      const EYE_LENGTH = 80;
+      const LEFT_EYE_START_X = 50;
+      const RIGHT_EYE_START_X = 170;
+      const EYE_CENTER_Y = 100;
+      const NOSE_LEFT_CENTER_X = 150;
+      const UNDERLIP_PADDING_X = 30;
+      const UNDERLIP_CENTER_Y = 240;
+
+      const UNDERLIP_START_X = UNDERLIP_PADDING_X;
+      const UNDERLIP_END_X = canvas.width - UNDERLIP_PADDING_X;
+      const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
+      const RIGHT_EYE_END_X = RIGHT_EYE_START_X + EYE_LENGTH;
       function bezier(template) {
         context.beginPath();
         context.moveTo(template[0].x, template[0].y);
@@ -32,28 +46,26 @@
         context.stroke();
       }
 
-      const EYE_LENGTH = 80;
-      const LEFT_EYE_START_X = 50;
-      const EYE_CENTER_Y = 100;
-
-      const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
+      function addRandomValueTo(number) {
+        return number + Math.random() * RANDOM_FACTOR;
+      }
 
       const underlip = [
         {
-          x: 30,
-          y: 240
+          x: UNDERLIP_START_X,
+          y: UNDERLIP_CENTER_Y
         },
         {
-          x: 30,
-          y: 290
+          x: addRandomValueTo(30),
+          y: addRandomValueTo(290)
         },
         {
-          x: 270,
-          y: 290
+          x: addRandomValueTo(270),
+          y: addRandomValueTo(290)
         },
         {
-          x: 270,
-          y: 240
+          x: UNDERLIP_END_X,
+          y: UNDERLIP_CENTER_Y
         }
       ];
 
@@ -65,12 +77,12 @@
           y: 240
         },
         {
-          x: 30,
-          y: 190
+          x: addRandomValueTo(30),
+          y: addRandomValueTo(190)
         },
         {
-          x: 270,
-          y: 190
+          x: addRandomValueTo(270),
+          y: addRandomValueTo(190)
         },
         {
           x: 270,
@@ -86,12 +98,12 @@
           y: EYE_CENTER_Y
         },
         {
-          x: 50,
-          y: 140
+          x: addRandomValueTo(50),
+          y: addRandomValueTo(140)
         },
         {
-          x: 130,
-          y: 140
+          x: addRandomValueTo(130),
+          y: addRandomValueTo(140)
         },
         {
           x: LEFT_EYE_END_X,
@@ -107,12 +119,12 @@
           y: EYE_CENTER_Y
         },
         {
-          x: 50,
-          y: 60
+          x: addRandomValueTo(50),
+          y: addRandomValueTo(60)
         },
         {
-          x: 130,
-          y: 60
+          x: addRandomValueTo(130),
+          y: addRandomValueTo(60)
         },
         {
           x: LEFT_EYE_END_X,
@@ -124,19 +136,19 @@
 
       const rightEyeLower = [
         {
-          x: 250,
+          x: RIGHT_EYE_START_X,
           y: EYE_CENTER_Y
         },
         {
-          x: 250,
-          y: 140
+          x: addRandomValueTo(170),
+          y: addRandomValueTo(140)
         },
         {
-          x: 170,
-          y: 140
+          x: addRandomValueTo(250),
+          y: addRandomValueTo(140)
         },
         {
-          x: 170,
+          x: RIGHT_EYE_END_X,
           y: EYE_CENTER_Y
         }
       ];
@@ -145,19 +157,19 @@
 
       const rightEyeUpper = [
         {
-          x: 250,
+          x: RIGHT_EYE_START_X,
           y: EYE_CENTER_Y
         },
         {
-          x: 250,
-          y: 60
+          x: addRandomValueTo(170),
+          y: addRandomValueTo(60)
         },
         {
-          x: 170,
-          y: 60
+          x: addRandomValueTo(250),
+          y: addRandomValueTo(60)
         },
         {
-          x: 170,
+          x: RIGHT_EYE_END_X,
           y: EYE_CENTER_Y
         }
       ];
@@ -166,19 +178,19 @@
 
       const noseLeft = [
         {
-          x: 150,
+          x: NOSE_LEFT_CENTER_X,
           y: 100
         },
         {
-          x: 120,
-          y: 160
+          x: addRandomValueTo(120),
+          y: addRandomValueTo(160)
         },
         {
-          x: 120,
-          y: 170
+          x: addRandomValueTo(120),
+          y: addRandomValueTo(170)
         },
         {
-          x: 150,
+          x: NOSE_LEFT_CENTER_X,
           y: 180
         }
       ];
