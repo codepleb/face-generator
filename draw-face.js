@@ -31,7 +31,7 @@ class DrawFace extends HTMLElement {
     const RIGHT_EYE_END_X = RIGHT_EYE_START_X + EYE_LENGTH;
     const ALL_HEX_VALUES = "0123456789ABCDEF";
 
-    function colorRandomizer() {
+    function getRandomizedHex() {
       return `#${[...Array(6)]
         .map(() => ALL_HEX_VALUES.charAt(Math.random() * 16))
         .join("")}`;
@@ -62,7 +62,7 @@ class DrawFace extends HTMLElement {
         template[5],
         template[6]
       );
-      context.fillStyle = colorRandomizer();
+      context.fillStyle = getRandomizedHex();
       context.fill();
       context.stroke();
     }
@@ -238,7 +238,7 @@ class DrawFace extends HTMLElement {
 
     function drawFace() {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      context.fillStyle = colorRandomizer();
+      context.fillStyle = getRandomizedHex();
       bezier(underlip);
       context.fill();
       bezier(upperLip);
@@ -248,7 +248,7 @@ class DrawFace extends HTMLElement {
       bezier(rightEyeUpper);
       bezier(rightEyeLower);
       bezier(noseLeft);
-      context.fillStyle = colorRandomizer();
+      context.fillStyle = getRandomizedHex();
       context.fill();
 
       ellipse(leftPupil);
