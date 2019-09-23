@@ -1,7 +1,14 @@
 class DrawFace extends HTMLElement {
   connectedCallback() {
     let shadow = this.attachShadow({ mode: "open" });
-    shadow.innerHTML = `<canvas id="face" width="300" height="300"></canvas>`;
+    shadow.innerHTML = `
+    <style>
+        canvas {
+        display: block;
+        margin: 0 auto;
+        }
+    </style>
+    <canvas id="face" width="300" height="300"></canvas>`;
 
     const canvas = this.shadowRoot.querySelector("#face");
     const context = canvas.getContext("2d");
