@@ -22,6 +22,14 @@ class DrawFace extends HTMLElement {
     const UNDERLIP_END_X = canvas.width - UNDERLIP_PADDING_X;
     const LEFT_EYE_END_X = LEFT_EYE_START_X + EYE_LENGTH;
     const RIGHT_EYE_END_X = RIGHT_EYE_START_X + EYE_LENGTH;
+    const ALL_HEX_VALUES = "0123456789ABCDEF";
+
+    function colorRandomizer() {
+      return `#${[...Array(6)]
+        .map(() => ALL_HEX_VALUES.charAt(Math.random() * 16))
+        .join("")}`;
+    }
+
     function bezier(template) {
       context.beginPath();
       context.moveTo(template[0].x, template[0].y);
@@ -47,6 +55,8 @@ class DrawFace extends HTMLElement {
         template[5],
         template[6]
       );
+      context.fillStyle = colorRandomizer();
+      context.fill();
       context.stroke();
     }
 
@@ -221,13 +231,18 @@ class DrawFace extends HTMLElement {
 
     function drawFace() {
       context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = colorRandomizer();
       bezier(underlip);
+      context.fill();
       bezier(upperLip);
+      context.fill();
       bezier(leftEyeUpper);
       bezier(leftEyeLower);
       bezier(rightEyeUpper);
       bezier(rightEyeLower);
       bezier(noseLeft);
+      context.fillStyle = colorRandomizer();
+      context.fill();
 
       ellipse(leftPupil);
       ellipse(rightPupil);
